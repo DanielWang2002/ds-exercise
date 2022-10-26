@@ -45,7 +45,6 @@ public class q8 {
                     System.out.println("出現次數為： " + max);
                     break;
                 }
-                
 
             }
         }

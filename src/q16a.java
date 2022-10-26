@@ -95,6 +95,56 @@ public class q16a {
         return 0;
     }
 
+    private static int f(String[] card) {
+        // 兩對
+        String firstPair = "";
+        for (String s : card) {
+            for (String ss : card) {
+                if (s.equals(ss)) {
+                    firstPair = s;
+                    break;
+                }
+            }
+        }
+        for (String s : card) {
+            for (String ss : card) {
+                if ((s.equals(ss)) && !s.equals(firstPair)) return 2;
+            }
+        }
+
+        return 0;
+    }
+
+    private static int g(String[] card) {
+        // 一對
+        for (String s : card) {
+            for (String ss : card) {
+                if (s.equals(ss)) return 1;
+            }
+        }
+
+        return 0;
+    }
+
+    private static int compare(String[] cardA, String[] cardB) {
+        if (a(cardA) > a(cardB)) {
+            return 1;
+        } else if (b(cardA) > b(cardB)) {
+            return 1;
+        } else if (c(cardA) > c(cardB)) {
+            return 1;
+        } else if (d(cardA) > d(cardB)) {
+            return 1;
+        } else if (e(cardA) > e(cardB)) {
+            return 1;
+        } else if (f(cardA) > f(cardB)) {
+            return 1;
+        } else if (g(cardA) > g(cardB)) {
+            return 1;
+        }
+        return 0;
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String foo = "0";
@@ -104,10 +154,11 @@ public class q16a {
             String[] cardA = scanner.nextLine().split(" ");
             String[] cardB = scanner.nextLine().split(" ");
             foo = scanner.nextLine();
-            System.out.println(b(cardA));
-            System.out.println(d(cardB));
+            arrayList.add(compare(cardA, cardB));
+        }
 
-
+        for (int element : arrayList) {
+            System.out.println(element);
         }
     }
 
