@@ -43,6 +43,58 @@ public class q16a {
         return 0;
     }
 
+    private static int c(String[] card) {
+        // 葫蘆
+
+        for (String s : card) {
+            int count = 0;
+            for (String ss : card) {
+                if (s.substring(1).equals(ss.substring(1))) count++;
+            }
+            if (count == 3) {
+                for (String ss : card) {
+                    int count2 = 0;
+                    for (String sss : card) {
+                        if ((ss.substring(1).equals(sss.substring(1))) && (!ss.equals(s))) count2++;
+                    }
+                    if (count2 == 2) return 5;
+                }
+            }
+        }
+
+        return 0;
+    }
+
+    private static int d(String[] card) {
+        // 順子
+
+        ArrayList<Integer> card_number = new ArrayList<>();
+        for (String s : card) {
+            card_number.add(Integer.parseInt(s.substring(1)));
+        }
+        Collections.sort(card_number);
+
+        for (int i=0; i<card_number.size()-1; i++) {
+            if (card_number.get(i) - card_number.get(i+1) != -1) return 0;
+        }
+
+        return 4;
+    }
+
+    private static int e(String[] card) {
+        // 三條
+
+        for (String s : card) {
+            int count = 0;
+            for (String ss : card) {
+                if (s.substring(1).equals(ss.substring(1))) count++;
+            }
+            if (count == 3) return 3;
+        }
+
+        return 0;
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String foo = "0";
@@ -53,7 +105,7 @@ public class q16a {
             String[] cardB = scanner.nextLine().split(" ");
             foo = scanner.nextLine();
             System.out.println(b(cardA));
-            System.out.println(b(cardB));
+            System.out.println(d(cardB));
 
 
         }
