@@ -126,23 +126,19 @@ public class q16a {
         return 0;
     }
 
+    private static int judge(String[] card) {
+        int ret = a(card);
+        ret = Math.max(ret, b(card));
+        ret = Math.max(ret, c(card));
+        ret = Math.max(ret, d(card));
+        ret = Math.max(ret, e(card));
+        ret = Math.max(ret, f(card));
+        ret = Math.max(ret, g(card));
+        return ret;
+    }
+
     private static int compare(String[] cardA, String[] cardB) {
-        if (a(cardA) > a(cardB)) {
-            return 1;
-        } else if (b(cardA) > b(cardB)) {
-            return 1;
-        } else if (c(cardA) > c(cardB)) {
-            return 1;
-        } else if (d(cardA) > d(cardB)) {
-            return 1;
-        } else if (e(cardA) > e(cardB)) {
-            return 1;
-        } else if (f(cardA) > f(cardB)) {
-            return 1;
-        } else if (g(cardA) > g(cardB)) {
-            return 1;
-        }
-        return 0;
+        return (judge(cardA) > judge(cardB)) ? 1 : 0;
     }
 
     public static void main(String[] args) {
